@@ -45,6 +45,8 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
+apollo client: http://localhost:3000/graphql
+
 ## Test
 
 ```bash
