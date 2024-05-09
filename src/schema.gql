@@ -1,0 +1,58 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""convert string to uppercase"""
+directive @upper on FIELD_DEFINITION
+
+"""Allowed colors"""
+enum AllowedColor {
+  BLACK
+  GREEN
+  RED
+  WHITE
+}
+
+type Car {
+  """car brand"""
+  brand: String!
+  color: AllowedColor!
+  model: String!
+  owner: Owner!
+  plateNo: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type Mutation {
+  newOwner(newOwnerInput: NewOwnerInput!): Owner!
+}
+
+input NewCarInput {
+  brand: String!
+  color: AllowedColor!
+  model: String!
+  plateNo: String!
+}
+
+input NewOwnerInput {
+  cars: [NewCarInput!]
+  createdAt: Date
+  firstName: String!
+  lastName: String!
+}
+
+type Owner {
+  age: Int @deprecated(reason: "no longer relatable")
+  cars: [Car!]!
+  createdAt: Date!
+  firstName: String
+  id: ID!
+  lastName: String
+}
+
+type Query {
+  car(plateNo: String!): Car!
+  owner(id: Int!): Owner!
+}
